@@ -1,0 +1,17 @@
+{
+  "name": "easy-elasticsearch",
+  "version": "1.0.2",
+  "description": "For using elasticsearch easy, created functions for CRUD and Search, elasticsearch:7.1.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "elasticsearch"
+  ],
+  "author": "Emin Yildiz <contact.eminyildiz@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "elasticsearch": "^16.3.0"
+  }
+}
