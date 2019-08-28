@@ -13,17 +13,16 @@ module.exports = {
             }),
 
             // connection verify:
-            VerifyConnection: function () {
+            VerifyConnection: function (_callback) {
                 this.client.ping({
                     // ping usually has a 3000ms timeout
                     requestTimeout: 1000
                 }, function (error) {
                     if (error) {
-                        console.log('elasticsearch cluster is down!');
-                        return false;
+                        _callback(false);
                     } else {
                         //console.log('All is well');
-                        return true;
+                        _callback(false);
                     }
                 });
             },

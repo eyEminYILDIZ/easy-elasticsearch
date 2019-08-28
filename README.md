@@ -42,6 +42,14 @@ employeeIndexClient.GetAll((data) => {
 ### other IndexClient functions
 ````javascript
 
+// verify conection
+employeeIndexClient.VerifyConnection((result)=>{
+    if(!result){
+        console.log("Elasticsearch Connection Failed");
+        return;
+    }
+});
+
 // CreateObject(data, callback)
 employeeIndexClient.CreateObject( { name: "Kemal Almaz", age: 18, classId: 3 }, (data) => {
     console.log(data);
