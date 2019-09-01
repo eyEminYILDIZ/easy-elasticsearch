@@ -22,7 +22,7 @@ module.exports = {
                         _callback(false);
                     } else {
                         //console.log('All is well');
-                        _callback(false);
+                        _callback(true);
                     }
                 });
             },
@@ -143,6 +143,33 @@ module.exports = {
                 });
             },
 
+            GetByDateRange: function (_startDate,_endDate,_callback) {
+
+                this.client.search({
+                    index: this._index,
+                    body: {
+                        query: {
+                            range : {
+                                datetime : {
+                                    gte: _startDate, 
+                                    lte: _endDate 
+                                }
+                            }
+                        }
+                    }
+                }, (err, resp, status) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        var cleanResults = [];
+                        var results = resp.hits.hits;
+                        results.forEach(result => {
+                            cleanResults.push(result._source);
+                        });
+                        _callback(cleanResults);
+                    }
+                });
+            },
 
             DeleteById: function (_id, _callback) {
                 this.client.delete({
