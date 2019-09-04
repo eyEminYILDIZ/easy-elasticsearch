@@ -9,6 +9,6 @@
   "author": "Emin Yıldız <contact.eminyildiz@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "easy-elasticsearch": "^1.1.0"
+    "easy-elasticsearch": "^1.2.1"
   }
 }
