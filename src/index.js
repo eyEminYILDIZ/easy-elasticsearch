@@ -206,6 +206,7 @@ module.exports = {
                         var cleanResults = [];
                         var results = resp.hits.hits;
                         results.forEach(result => {
+                            result._source._id=result._id;
                             cleanResults.push(result._source);
                         });
                         _callback(cleanResults);
@@ -231,6 +232,7 @@ module.exports = {
                 var cleanResults = [];
                 var results = resp.hits.hits;
                 results.forEach(result => {
+                    result._source._id=result._id;
                     cleanResults.push(result._source);
                 });
                 return cleanResults;
@@ -252,6 +254,7 @@ module.exports = {
                         var cleanResults = [];
                         var results = resp.hits.hits;
                         results.forEach(result => {
+                            result._source._id=result._id;
                             cleanResults.push(result._source);
                         });
                         _callback(cleanResults);
@@ -272,6 +275,7 @@ module.exports = {
                 var cleanResults = [];
                 var results = resp.hits.hits;
                 results.forEach(result => {
+                    result._source._id=result._id;
                     cleanResults.push(result._source);
                 });
                 return cleanResults;
@@ -298,6 +302,7 @@ module.exports = {
                         var cleanResults = [];
                         var results = resp.hits.hits;
                         results.forEach(result => {
+                            result._source._id=result._id;
                             cleanResults.push(result._source);
                         });
                         _callback(cleanResults);
@@ -324,6 +329,7 @@ module.exports = {
                 var cleanResults = [];
                 var results = resp.hits.hits;
                 results.forEach(result => {
+                    result._source._id=result._id;
                     cleanResults.push(result._source);
                 });
                 return cleanResults;
