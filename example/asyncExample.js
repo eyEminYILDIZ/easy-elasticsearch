@@ -25,15 +25,17 @@ async function run() {
     // var log = await logIndexClient.GetObjectByIdAsync("xftP-2wB6LPtu7BJHwNo");
     // console.log(log);
 
-    // // GetCountByDateRangeAsync(startDateTime, endDateTime);
+    // // GetCountByDateRangeAsync(key,startDateTime, endDateTime);
     // var count = await logIndexClient.GetCountByDateRangeAsync(
+    //     "datetime",
     //     "2019-09-01T09:33:53.575Z",
     //     "2019-09-15T09:33:53.575Z",
     // );
     // console.log(count);
     
-    // // GetObjectsByDateRangeAsync(startDateTime, endDateTime);
+    // // GetObjectsByDateRangeAsync(key,startDateTime, endDateTime);
     // var logs = await logIndexClient.GetObjectsByDateRangeAsync(
+    //     "datetime",
     //     "2019-09-01T09:33:53.575Z",
     //     "2019-09-15T09:33:53.575Z",
     // );

@@ -206,7 +206,7 @@ module.exports = {
                         var cleanResults = [];
                         var results = resp.hits.hits;
                         results.forEach(result => {
-                            result._source._id=result._id;
+                            result._source._id = result._id;
                             cleanResults.push(result._source);
                         });
                         _callback(cleanResults);
@@ -232,7 +232,7 @@ module.exports = {
                 var cleanResults = [];
                 var results = resp.hits.hits;
                 results.forEach(result => {
-                    result._source._id=result._id;
+                    result._source._id = result._id;
                     cleanResults.push(result._source);
                 });
                 return cleanResults;
@@ -254,7 +254,7 @@ module.exports = {
                         var cleanResults = [];
                         var results = resp.hits.hits;
                         results.forEach(result => {
-                            result._source._id=result._id;
+                            result._source._id = result._id;
                             cleanResults.push(result._source);
                         });
                         _callback(cleanResults);
@@ -275,24 +275,25 @@ module.exports = {
                 var cleanResults = [];
                 var results = resp.hits.hits;
                 results.forEach(result => {
-                    result._source._id=result._id;
+                    result._source._id = result._id;
                     cleanResults.push(result._source);
                 });
                 return cleanResults;
             },
 
-            GetObjectsByDateRange: function (_startDate, _endDate, _callback) {
+            GetObjectsByDateRange: function (_key, _startDate, _endDate, _callback) {
+
+                var rangeObject = {};
+                rangeObject[_key] = {
+                    gte: _startDate,
+                    lte: _endDate
+                }
 
                 this.client.search({
                     index: this._index,
                     body: {
                         query: {
-                            range: {
-                                datetime: {
-                                    gte: _startDate,
-                                    lte: _endDate
-                                }
-                            }
+                            range: rangeObject
                         }
                     }
                 }, (err, resp, status) => {
@@ -302,7 +303,7 @@ module.exports = {
                         var cleanResults = [];
                         var results = resp.hits.hits;
                         results.forEach(result => {
-                            result._source._id=result._id;
+                            result._source._id = result._id;
                             cleanResults.push(result._source);
                         });
                         _callback(cleanResults);
@@ -310,18 +311,19 @@ module.exports = {
                 });
             },
 
-            GetObjectsByDateRangeAsync: async function (_startDate, _endDate) {
+            GetObjectsByDateRangeAsync: async function (_key, _startDate, _endDate) {
+
+                var rangeObject = {};
+                rangeObject[_key] = {
+                    gte: _startDate,
+                    lte: _endDate
+                }
 
                 var resp = await this.client.search({
                     index: this._index,
                     body: {
                         query: {
-                            range: {
-                                datetime: {
-                                    gte: _startDate,
-                                    lte: _endDate
-                                }
-                            }
+                            range: rangeObject
                         }
                     }
                 });
@@ -329,24 +331,25 @@ module.exports = {
                 var cleanResults = [];
                 var results = resp.hits.hits;
                 results.forEach(result => {
-                    result._source._id=result._id;
+                    result._source._id = result._id;
                     cleanResults.push(result._source);
                 });
                 return cleanResults;
             },
 
-            GetCountByDateRange: function (_startDate, _endDate, _callback) {
+            GetCountByDateRange: function (_key, _startDate, _endDate, _callback) {
+
+                var rangeObject = {};
+                rangeObject[_key] = {
+                    gte: _startDate,
+                    lte: _endDate
+                }
 
                 this.client.count({
                     index: this._index,
                     body: {
                         query: {
-                            range: {
-                                datetime: {
-                                    gte: _startDate,
-                                    lte: _endDate
-                                }
-                            }
+                            range: rangeObject
                         }
                     }
                 }, (err, resp, status) => {
@@ -358,18 +361,19 @@ module.exports = {
                 });
             },
 
-            GetCountByDateRangeAsync: async function (_startDate, _endDate) {
+            GetCountByDateRangeAsync: async function (_key, _startDate, _endDate) {
+
+                var rangeObject = {};
+                rangeObject[_key] = {
+                    gte: _startDate,
+                    lte: _endDate
+                }
 
                 var resp = await this.client.count({
                     index: this._index,
                     body: {
                         query: {
-                            range: {
-                                datetime: {
-                                    gte: _startDate,
-                                    lte: _endDate
-                                }
-                            }
+                            range: rangeObject
                         }
                     }
                 });
