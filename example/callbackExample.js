@@ -68,10 +68,19 @@ employeeIndexClient.GetAll((data) => {
 // });
 
 
-// // GetByDateRange(startDateTime, endDateTime, callback);
-// employeeIndexClient.GetByDateRange(
+// // GetObjectsByDateRange(startDateTime, endDateTime, callback);
+// employeeIndexClient.GetObjectsByDateRange(
 //     "2019-09-01T09:33:53.575Z",
 //     "2019-09-15T09:33:53.575Z",
 //     (data) => {
 //         console.log(data);
+//     });
+
+
+// // GetCountByDateRange(startDateTime, endDateTime, callback);
+// employeeIndexClient.GetCountByDateRange(
+//     "2019-09-01T09:33:53.575Z",
+//     "2019-09-15T09:33:53.575Z",
+//     (count) => {
+//         console.log(count);
 //     });

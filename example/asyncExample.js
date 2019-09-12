@@ -1,4 +1,4 @@
-var easyElasticSearch = require("easy-elasticsearch");
+var easyElasticSearch = require("elasticsearch");
 
 var logIndexClient = easyElasticSearch.CreateIndexClient({
     host: 'localhost:9200',
@@ -16,7 +16,7 @@ async function run() {
     //     console.log("verified");
 
 
-    // // GetAllAsync()
+    // GetAllAsync()
     var logs = await logIndexClient.GetAllAsync();
     console.log(logs);
 
@@ -25,9 +25,15 @@ async function run() {
     // var log = await logIndexClient.GetObjectByIdAsync("xftP-2wB6LPtu7BJHwNo");
     // console.log(log);
 
-
-    // // GetByDateRangeAsync(startDateTime, endDateTime);
-    // var logs = await logIndexClient.GetByDateRangeAsync(
+    // // GetCountByDateRangeAsync(startDateTime, endDateTime);
+    // var count = await logIndexClient.GetCountByDateRangeAsync(
+    //     "2019-09-01T09:33:53.575Z",
+    //     "2019-09-15T09:33:53.575Z",
+    // );
+    // console.log(count);
+    
+    // // GetObjectsByDateRangeAsync(startDateTime, endDateTime);
+    // var logs = await logIndexClient.GetObjectsByDateRangeAsync(
     //     "2019-09-01T09:33:53.575Z",
     //     "2019-09-15T09:33:53.575Z",
     // );

@@ -90,11 +90,18 @@ employeeIndexClient.GetCountByForeignKeyValue({ classId: 1, name: "Can Kaçar" }
     console.log(data);
 });
 
-// GetByDateRange(startDateTime, endDateTime, callback);
-employeeIndexClient.GetByDateRange(
+// GetObjectsByDateRange(startDateTime, endDateTime, callback);
+employeeIndexClient.GetObjectsByDateRange(
     "2019-09-01T09:33:53.575Z", "2019-09-15T09:33:53.575Z",
     (data) => {
         console.log(data);
+    });
+
+// GetCountByDateRange(startDateTime, endDateTime, callback);
+employeeIndexClient.GetCountByDateRange(
+    "2019-09-01T09:33:53.575Z", "2019-09-15T09:33:53.575Z",
+    (count) => {
+        console.log(count);
     });
 
 ````
@@ -124,12 +131,19 @@ async function run() {
     console.log(log);
 
 
-    // GetByDateRangeAsync(startDateTime, endDateTime);
-    var logs = await logIndexClient.GetByDateRangeAsync(
+    // GetObjectsByDateRangeAsync(startDateTime, endDateTime);
+    var logs = await logIndexClient.GetObjectsByDateRangeAsync(
         "2019-09-01T09:33:53.575Z",
         "2019-09-15T09:33:53.575Z",
     );
     console.log(logs);
+
+    // GetCountByDateRangeAsync(startDateTime, endDateTime);
+    var count = await logIndexClient.GetCountByDateRangeAsync(
+        "2019-09-01T09:33:53.575Z",
+        "2019-09-15T09:33:53.575Z",
+    );
+    console.log(count);
 
 
     // GetAllByKeyValuesAsync(data, callback)

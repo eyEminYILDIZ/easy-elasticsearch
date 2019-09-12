@@ -281,7 +281,7 @@ module.exports = {
                 return cleanResults;
             },
 
-            GetByDateRange: function (_startDate, _endDate, _callback) {
+            GetObjectsByDateRange: function (_startDate, _endDate, _callback) {
 
                 this.client.search({
                     index: this._index,
@@ -310,7 +310,7 @@ module.exports = {
                 });
             },
 
-            GetByDateRangeAsync: async function (_startDate, _endDate) {
+            GetObjectsByDateRangeAsync: async function (_startDate, _endDate) {
 
                 var resp = await this.client.search({
                     index: this._index,
@@ -333,6 +333,48 @@ module.exports = {
                     cleanResults.push(result._source);
                 });
                 return cleanResults;
+            },
+
+            GetCountByDateRange: function (_startDate, _endDate, _callback) {
+
+                this.client.count({
+                    index: this._index,
+                    body: {
+                        query: {
+                            range: {
+                                datetime: {
+                                    gte: _startDate,
+                                    lte: _endDate
+                                }
+                            }
+                        }
+                    }
+                }, (err, resp, status) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        _callback(resp.count);
+                    }
+                });
+            },
+
+            GetCountByDateRangeAsync: async function (_startDate, _endDate) {
+
+                var resp = await this.client.count({
+                    index: this._index,
+                    body: {
+                        query: {
+                            range: {
+                                datetime: {
+                                    gte: _startDate,
+                                    lte: _endDate
+                                }
+                            }
+                        }
+                    }
+                });
+
+                return resp.count;
             },
 
             DeleteById: function (_id, _callback) {
